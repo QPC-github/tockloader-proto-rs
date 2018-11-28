@@ -155,14 +155,14 @@ pub enum Error {
 /// The `ComandDecoder` takes bytes and gives you `Command`s.
 pub struct CommandDecoder {
     state: DecoderState,
-    buffer: [u8; 1030],
+    buffer: [u8; 2000],
     count: usize,
 }
 
 /// The `ResponseDecoder` takes bytes and gives you `Responses`s.
 pub struct ResponseDecoder {
     state: DecoderState,
-    buffer: [u8; 1030],
+    buffer: [u8; 2000],
     count: usize,
     needed: Option<usize>,
 }
@@ -293,7 +293,7 @@ impl CommandDecoder {
     pub fn new() -> CommandDecoder {
         CommandDecoder {
             state: DecoderState::Loading,
-            buffer: [0u8; 1030],
+            buffer: [0u8; 2000],
             count: 0,
         }
     }
@@ -533,7 +533,7 @@ impl ResponseDecoder {
     pub fn new() -> ResponseDecoder {
         ResponseDecoder {
             state: DecoderState::Loading,
-            buffer: [0u8; 1030],
+            buffer: [0u8; 2000],
             count: 0,
             needed: None,
         }
