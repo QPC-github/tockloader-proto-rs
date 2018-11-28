@@ -372,17 +372,17 @@ impl CommandDecoder {
                 }
             }
             CMD_WPAGE => {
-                let num_expected_bytes: usize = INT_PAGE_SIZE + 4;
-                if self.count == num_expected_bytes {
-                    let payload = &self.buffer[0..num_expected_bytes];
+                // let num_expected_bytes: usize = INT_PAGE_SIZE + 4;
+                // if self.count == num_expected_bytes {
+                    let payload = &self.buffer[0..];
                     let address = LittleEndian::read_u32(&payload[0..4]);
                     Ok(Some(Command::WritePage {
                         address,
-                        data: &payload[4..num_expected_bytes],
+                        data: &payload[4..],
                     }))
-                } else {
-                    Err(Error::BadArguments)
-                }
+                // } else {
+                //     Err(Error::BadArguments)
+                // }
             }
             CMD_XEBLOCK => {
                 let num_expected_bytes: usize = 4;
