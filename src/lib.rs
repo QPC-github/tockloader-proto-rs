@@ -155,7 +155,7 @@ pub enum Error {
 /// The `ComandDecoder` takes bytes and gives you `Command`s.
 pub struct CommandDecoder {
     state: DecoderState,
-    buffer: [u8; 520],
+    buffer: [u8; 4224],
     count: usize,
 }
 
@@ -293,7 +293,7 @@ impl CommandDecoder {
     pub fn new() -> CommandDecoder {
         CommandDecoder {
             state: DecoderState::Loading,
-            buffer: [0u8; 520],
+            buffer: [0u8; 4224],
             count: 0,
         }
     }
