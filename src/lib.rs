@@ -374,7 +374,7 @@ impl CommandDecoder {
             CMD_WPAGE => {
                 // let num_expected_bytes: usize = INT_PAGE_SIZE + 4;
                 // if self.count == num_expected_bytes {
-                    let payload = &self.buffer[0..];
+                    let payload = &self.buffer[0..self.count];
                     let address = LittleEndian::read_u32(&payload[0..4]);
                     Ok(Some(Command::WritePage {
                         address,
